@@ -66,3 +66,7 @@ body #main-card-end {
     margin-left: 12px;
     margin-top: 0px;
 }
+
+#olEl{
+    list-style: none;
+}

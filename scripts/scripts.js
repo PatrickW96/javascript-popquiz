@@ -1,63 +1,80 @@
 
 // Adding an event listener with a fucntion that starts the quiz
 document.getElementById("startBtn").addEventListener("click" , function() {
+    // Removes the "main-card" div from the DOM 
     document.getElementById("main-card").remove();
+    quiz();
+})
 
-    //HTML is now removed from current page
-    // Adding new elements to the document
-    var mainDivElement = document.createElement("div");
-    var h2EL = document.createElement("h2");
-    var olEL = document.createElement("ol");
+//  Creating a function that displays and removes html elements based what user does
+function quiz() {
+        // Creating every element for quiz card 
+        var mainDivElement = document.createElement("div");
+        var h2EL = document.createElement("h2");
+        var orderedList = document.createElement("ol");
+        var li = document.createElement("li");
+        var li2 = document.createElement("li");
+        var li3 = document.createElement("li");
+        var li4 = document.createElement("li");
+        var btnEl1 = document.createElement("button");
+        var btnEl2 = document.createElement("button");
+        var btnEl3 = document.createElement("button");
+        var btnEl4 = document.createElement("button");
+        var brEl = document.createElement("br");
+        var hrEL = document.createElement("hr");
+        var pTag = document.createElement("p");
 
-    // Adding necessary attributes to elements
-    mainDivElement.setAttribute("id" , "main-card-questions");
-    mainDivElement.setAttribute("class" , "container mx-auto p-3 w-50");
+        mainDivElement.setAttribute("id" , "main-card-questions");
+        mainDivElement.setAttribute("class" , "container mx-auto p-3 w-50");
+    
+        // Applying all the nescessary attribues for targeting/ styling
+        mainDivElement.setAttribute("id" , "main-card-questions");
+        mainDivElement.setAttribute("class" , "container mx-auto p-3 w-50");
+    
+        h2EL.setAttribute("id" , "questions");
+        h2EL.setAttribute("class" , "m-2 mb-3");
+    
+        orderedList.setAttribute("id" , "olEl");
+        orderedList.setAttribute("class" , "mr-auto");
 
-    h2EL.setAttribute("id" , "questions");
-    h2EL.setAttribute("class" , "m-2 mb-3");
-
-    olEL.setAttribute("id" , "olEL")
-    h2EL.setAttribute("class" , "mr-auto")
-
-    // Creating an array to hold all the quiz questions
-    var questions = ["Which character defines an array?" , "Which is the correct syntax for a \"for\" loop?" , "Which of the following is a function?" , "Which of the following is a string?" , "What does \"5\" + 10 = ?"];
-
-    // Creating a loop so the quiz loops through question array
-    for (var i = 0; i < questions.length; i++) {
-        h2EL.textContent = questions[i];
-        console.log(questions[i]);
-
-
-        // Decide how you would like to do the loop to loop through the questions.
-        // Also think about how you are going to produce the answers.
-    }
-
-    })
-
-// Creating var to hold question and answer values
-// var answers = ["[]" , "for (var i = 0; i < x; i++)" , "function()" , "Welcome to the beginging" , "510"];
-
-// // Creating a loop to clear and print to the page the correct HTML elements for each question
-// for (var i = 0; i < questions.length; i++) {
-
-//     // First I create some HTML elements to store the quiz data
-//     var mainDiv = document.createElement("div").setAttribute("id" , "main-wrapper");
-//     var h1El = document.createElement("h1");
-//     var olEl = document.createElement("ol");
-//     var liEl = document.createElement("li");
-//     var btnEl = document.createElement("button");
-
-//     // Adding contents to elements 
-//     h1El.textContent = questions[i];
+        li.setAttribute("id" , "option1");
+        li.setAttribute("class" , "m-2");
+        li2.setAttribute("id" , "option2");
+        li2.setAttribute("class" , "m-2");
+        li3.setAttribute("id" , "option3");
+        li3.setAttribute("class" , "m-2");
+        li4.setAttribute("id" , "option4");
+        li4.setAttribute("class" , "m-2");
 
 
-//     //Pushing the elements onto the DOM
-//     document.body.getElementById("main-wrapper").appendChild(h1El); 
-// }
-// })
+        hrEL.setAttribute("class" , "line-break");
+
+        pTag.setAttribute("class" , "text-muted mr-auto pl-4");
+
+        // Pushing main div to the page
+        document.body.appendChild(mainDivElement);
+
+        // Adding children
+        document.getElementById("main-card-questions").appendChild(orderedList);
+
+        document.getElementById("olEl").appendChild(li);
+        document.getElementById("option1").appendChild(btnEl1);
+
+        document.getElementById("olEl").appendChild(li2);
+        document.getElementById("option2").appendChild(btnEl2);
+
+        document.getElementById("olEl").appendChild(li3);
+        document.getElementById("option3").appendChild(btnEl3);
+
+        document.getElementById("olEl").appendChild(li4);
+        document.getElementById("option4").appendChild(btnEl4);
+
+        document.getElementById("main-card-questions").appendChild(brEl);
+        document.getElementById("main-card-questions").appendChild(hrEL);
+        document.getElementById("main-card-questions").appendChild(pTag);
 
 
-//     // Adding contents to the elements 
-//     h1El.textContent = questions[i];
-//     document.getElementById("main-wrapper").appendChild(h1El);
-//     }
+
+    
+
+}
