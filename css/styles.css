@@ -1,8 +1,68 @@
-p {
-    width:50%;
+#scoreTimerCard {
+    border: solid black 2px;
 }
+
+body #main-card {
+    border: solid black 2px;
+    box-shadow: 0 8px 16px 0 rgba(0 , 0 , 0 , 0.3);
+    display: grid;
+    place-items: center;
+    margin-top: 100px;
+}
+
 @media only screen and (max-width:768px) {
-    p {
-        width: 90% !important;
+    #main-card {
+        width: 95% !important;
+        margin-top: 75px !important;
     }
+
+    #scoreTimerCard {
+        margin-top: 5px !important;
+    }
+}
+
+body #main-card-questions {
+    border: solid black 2px;
+    box-shadow: 0 8px 16px 0 rgba(0 , 0 , 0 , 0.3);
+    display: grid;
+    place-items: center;
+    margin-top: 100px;
+}
+
+@media only screen and (max-width:768px) {
+    #main-card-questions {
+        width: 95% !important;
+        margin-top: 75px !important;
+    }
+}
+
+body #main-card-end {
+    border: solid black 2px;
+    box-shadow: 0 8px 16px 0 rgba(0 , 0 , 0 , 0.3);
+    display: grid;
+    place-items: center;
+    margin-top: 100px;
+}
+
+@media only screen and (max-width:768px) {
+    #main-card-end {
+        width: 95% !important;
+        margin-top: 75px !important;
+    }
+}
+
+.line-break {
+    border: 2px solid #496985;
+    width: 75%;
+    text-align: left;
+    margin-left: 23px;
+    margin-top: 0px;
+}
+
+.line-break2 {
+    border: 2px solid #496985;
+    width: 75%;
+    text-align: left;
+    margin-left: 12px;
+    margin-top: 0px;
 }
