@@ -1,0 +1,102 @@
+
+        // Object to mulitple choices in arrays
+        var options1 = ["a.{}" , "b.()" , "c.[]" , "d.</>"];
+        var options2 = ["a.for (i=0; i<5, i++)" , "b.for (var i=0; i<5; i++)" , "c.for(vari=0 i<5 i++)" , "d.for {var i=0; i<5; i++)"];
+        var options3 = ["a.function{}" , "b.function++" , "c.function.function" , "d.function()"];
+        var options4 = ["a.\"5\"" , "b.20" , "c.alert()" , "d.styles.css"];
+        var options5 = ["a.510" , "b.50" , "c.15" , "d.undefined"];
+    // Creating an object to hold arrays that correspond with each question
+    var answerOptions = {
+        "options5" : ["a.510" , "b.50" , "c.15" , "d.undefined"]
+        };
+ 
+
+    var answers = [["a.{}" , "b.()" , "c.[]" , "d.</>"], ["a.for (i=0; i<5, i++)" , "b.for (var i=0; i<5; i++)" , "c.for(vari=0 i<5 i++)" , "d.for {var i=0; i<5; i++)"],
+    ["a.function{}" , "b.function++" , "c.function.function" , "d.function()"], ["a.\"5\"" , "b.20" , "c.alert()" , "d.styles.css"], ["a.510" , "b.50" , "c.15" , "d.undefined"]];
+
+        // Pushing main div onto DOM 
+        document.body.appendChild(mainDivElement);
+
+
+        // document.getElementById("main-card-questions").appendChild(brEl);
+        // document.getElementById("main-card-questions").appendChild(hrEL);
+        // document.getElementById("main-card-questions").appendChild(pEL);
+        
+        // Creating a for loop to iterate through quiz questions
+        for (var i = 0; i < questions.length; i++) {
+            // Push the h2 el to DOM and define
+            document.getElementById("main-card-questions").appendChild(h2EL);
+            h2EL.textContent = questions[i];
+
+            document.getElementById("main-card-questions").appendChild(olEL);
+            // olEL.innerHTML = multipleChoices
+
+            var multipleChoices = document.getElementById("olEl").appendChild(li).appendChild(btnEl);
+            olEL.innerHTML = multipleChoices;
+            
+        }
+
+})    
+    
+    // ----------------------------------------------------------------------------------------------------------------------------------
+    // ----------------------------------------------------------------------------------------------------------------------------------
+    // ----------------------------------------------------------------------------------------------------------------------------------
+    // ----------------------------------------------------------------------------------------------------------------------------------
+    
+    // Creating a loop so the quiz loops through questions array and answerOptions object
+    for (var i = 0; i < questions.length; i++) {
+        
+        // Defining elements content
+        h2EL.textContent = questions[i];
+
+
+        // Pushing elements to the DOM 
+        document.body.appendChild(mainDivElement);
+        document.getElementById("main-card-questions").appendChild(h2EL);
+        document.getElementById("main-card-questions").appendChild(olEL);
+
+        // Creating li elements to append to ol 
+
+
+        // Decide how you would like to do the loop to loop through the questions.
+        // Also think about how you are going to produce the answers.
+    }
+
+    })
+
+
+
+
+
+
+
+
+
+
+// Creating var to hold question and answer values
+// var answers = ["[]" , "for (var i = 0; i < x; i++)" , "function()" , "Welcome to the beginging" , "510"];
+
+// // Creating a loop to clear and print to the page the correct HTML elements for each question
+// for (var i = 0; i < questions.length; i++) {
+
+//     // First I create some HTML elements to store the quiz data
+//     var mainDiv = document.createElement("div").setAttribute("id" , "main-wrapper");
+//     var h1El = document.createElement("h1");
+//     var olEl = document.createElement("ol");
+//     var liEl = document.createElement("li");
+//     var btnEl = document.createElement("button");
+
+//     // Adding contents to elements 
+//     h1El.textContent = questions[i];
+
+
+//     //Pushing the elements onto the DOM
+//     document.body.getElementById("main-wrapper").appendChild(h1El); 
+// }
+// })
+
+
+//     // Adding contents to the elements 
+//     h1El.textContent = questions[i];
+//     document.getElementById("main-wrapper").appendChild(h1El);
+//     }

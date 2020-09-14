@@ -1,0 +1,44 @@
+    console.log("were in here");
+        
+    // Creating every element for quiz card 
+    var mainDivElement = document.createElement("div");
+    var h2EL = document.createElement("h2");
+    var orderedList = document.createElement("ol");
+    var li = document.createElement("li");
+
+    var liEl2 = document.createElement("li");
+    var btnEl= document.createElement("button");
+    var brEl = document.createElement("br");
+    var hrEL = document.createElement("hr");
+    var pTag = document.createElement("p");
+s
+    // Setting the necessary attributes
+    mainDivElement.setAttribute("id" , "main-card-questions");
+    mainDivElement.setAttribute("class" , "container mx-auto p-3 w-50");
+
+    h2EL.setAttribute("id" , "questions");
+    h2EL.setAttribute("class" , "m-2 mb-3");
+
+    orderedList.setAttribute("id" , "multiple-choices");
+    orderedList.setAttribute("class" , "mr-auto");
+
+    liEl.setAttribute("id" , "options");
+    liEl.setAttribute("class" , "m-2");
+
+    liEl2.setAttribute("class" , "m-2");
+
+
+    hrEL.setAttribute("class" , "line-break");
+
+    pTag.setAttribute("id" , "correct-wrong");
+    pTag.setAttribute("class" , "text-muted mr-auto pl-4");
+
+    // Pushing elements to the DOM starting with the main div
+    document.body.appendChild(mainDivElement);
+    // Adding children
+    document.getElementById("main-card-questions").appendChild(h2EL);
+    document.getElementById("main-card-questions").appendChild(orderedList);
+    document.getElementById("multiple-choices").appendChild(liEl);
+    document.getElementById("multiple-choices").appendChild(liEl2);
+
+    document.getElementById("options").appendChild(btnEl);
