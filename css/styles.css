@@ -21,7 +21,7 @@ body #main-card {
     }
 }
 
-body #main-card-questions {
+body #question-card {
     border: solid black 2px;
     box-shadow: 0 8px 16px 0 rgba(0 , 0 , 0 , 0.3);
     display: grid;
@@ -30,7 +30,7 @@ body #main-card-questions {
 }
 
 @media only screen and (max-width:768px) {
-    #main-card-questions {
+    #question-card {
         width: 95% !important;
         margin-top: 75px !important;
     }
