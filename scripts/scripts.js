@@ -25,11 +25,13 @@ var cardContent = [
     },
     {
         question : "What does \"5\" + 10 = ?",
-        choice1 : ["a.510", "b.50", "c.15", "d.undefined"],
+        choices : ["a.510", "b.50", "c.15", "d.undefined"],
         answer : "a.510",
         questionNum : 5
     }
 ];
+
+var c = 0;
 
 // Adding an event listener with a fucntion that starts the quiz
 document.getElementById("startBtn").addEventListener("click" , function() {
@@ -82,39 +84,52 @@ document.getElementById("startBtn").addEventListener("click" , function() {
 
 // Function to display content based on conditions 
 function displayContent() {
-    c = 0;
-    var pageNumber;
+    // var pageNumber;
     var question = cardContent[c].question;
     var questionDisplayed = document.getElementById("question-display");
     questionDisplayed.innerHTML = "";
 
-    if (pageNumber = cardContent[c].questionNum) {
+    // if (pageNumber = cardContent[c].questionNum) {
         questionDisplayed.innerHTML = question;
 
-        for (var d = 0; d < 4; d++) {
-            var choiceDisplay = document.querySelector(".button-" + d);
-            choiceDisplay.innerHTML = cardContent[c].choices[d];  
-        }
+        // for (var d = 0; d < 4; d++) {
+            // var choiceDisplay = document.querySelector(".button-" + d);
+            // choiceDisplay.innerHTML = cardContent[c].choices[d];  
+        // }
 
         for (var b = 0; b < 4; b++) {
-
             var buttonClicker = document.querySelector(".button-" + b);
+            buttonClicker.innerHTML = cardContent[c].choices[b]; 
             buttonClicker.addEventListener("click" , function(event) {
             console.log("buttons work")
-    
-            var targetClick = event.target.innerHTML;
-            console.log(targetClick);
-    
-            if (targetClick !== cardContent[c].answer) {
-                var grade = document.getElementById("question-grade");
-                grade.innerHTML = "Incorrect.";
-            } else {
-                var grade = document.getElementById("question-grade");
-                grade.innerHTML = "Correct.";
-            }
-            });
+            event.stopPropagation();
+            handleClick(event);
+            })
         }          
+    // }
+}
+
+function handleClick(event) {
+
+    var targetClick = event.target.innerHTML;
+    console.log(targetClick);
+
+    if (targetClick !== cardContent[c].answer) {
+        var grade = document.getElementById("question-grade");
+        grade.innerHTML = "Incorrect.";
+        goToNext();
+    } else {
+        var grade = document.getElementById("question-grade");
+        grade.innerHTML = "Correct.";
+        goToNext();
     }
+}
+
+function goToNext() {
+    setTimeout(function() {
+        c++
+        displayContent();
+    }, 1000)
 }
 
 // function countIterator() {
