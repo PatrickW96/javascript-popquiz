@@ -1,5 +1,6 @@
 #scoreTimerCard {
     border: solid black 2px;
+    box-shadow: 0 6px 12px 0 rgba(0 , 0 , 0 , 0.3);
 }
 
 body #main-card {
@@ -77,6 +78,7 @@ body #main-card-end {
     border-radius: 10px;
     outline: 0;
     font-size: 1.6rem;
+    padding-left: 1.2rem;
 }
 
 .button:hover {
