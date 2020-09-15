@@ -67,6 +67,27 @@ body #main-card-end {
     margin-top: 0px;
 }
 
-#olEl{
-    list-style: none;
+.button {
+    border: none;
+    padding: .3rem;
+    text-align: left;
+    background-color: #929fb3;
+    color: #e8eaed;
+    width: 85%;
+    border-radius: 10px;
+    outline: 0;
+    font-size: 1.6rem;
+}
+
+.button:hover {
+    background-color: #555d69;
+    transform: scale(1.02);
+}
+
+.button:focus {
+    outline:0;
+}
+
+.button:active {
+    transform: scale(1.05);
 }
