@@ -37,7 +37,16 @@ var c = 0;
 document.getElementById("startBtn").addEventListener("click" , function() {
     // Removes the "main-card" div from the DOM 
     document.getElementById("main-card").remove();
-    // Laying out all the HTML that will be used for the quiz
+    // MOVED ALL THE CODE THAT WAS HERE TO -> createQuestionTemplate function
+        // That way we can resuse the code. 
+        // Basically we make sure the whole card is deleted before start adding the new questions
+   createQuestionTemplate();
+
+    displayContent();
+})
+
+function createQuestionTemplate() {
+     // Laying out all the HTML that will be used for the quiz
 
     // Main div
     var mainDiv =  document.createElement("div");
@@ -78,65 +87,50 @@ document.getElementById("startBtn").addEventListener("click" , function() {
     gradeEL.setAttribute("id" , "question-grade");
     gradeEL.setAttribute("class" , "text-muted pl-4  mr-auto grade");
     document.getElementById("question-card").appendChild(gradeEL);
-
-    displayContent();
-})
+}
 
 // Function to display content based on conditions 
 function displayContent() {
-    // var pageNumber;
+    var card = document.querySelector('#question-card');
+    card.remove(); // doing this helped with the multiple firing issue
+    createQuestionTemplate();
+
     var question = cardContent[c].question;
     var questionDisplayed = document.getElementById("question-display");
-    questionDisplayed.innerHTML = "";
+    questionDisplayed.textContent = "";
 
-    // if (pageNumber = cardContent[c].questionNum) {
-        questionDisplayed.innerHTML = question;
-
-        // for (var d = 0; d < 4; d++) {
-            // var choiceDisplay = document.querySelector(".button-" + d);
-            // choiceDisplay.innerHTML = cardContent[c].choices[d];  
-        // }
+        questionDisplayed.textContent = question;
 
         for (var b = 0; b < 4; b++) {
             var buttonClicker = document.querySelector(".button-" + b);
-            buttonClicker.innerHTML = cardContent[c].choices[b]; 
+            buttonClicker.textContent = cardContent[c].choices[b]; 
             buttonClicker.addEventListener("click" , function(event) {
-            console.log("buttons work")
             event.stopPropagation();
             handleClick(event);
             })
         }          
-    // }
 }
 
 function handleClick(event) {
-
-    var targetClick = event.target.innerHTML;
+    console.log('Current: ', c)
+    console.log(cardContent[1].answer)
+    var targetClick = event.target.textContent;
     console.log(targetClick);
 
     if (targetClick !== cardContent[c].answer) {
         var grade = document.getElementById("question-grade");
-        grade.innerHTML = "Incorrect.";
+        grade.textContent = "Incorrect.";
         goToNext();
     } else {
         var grade = document.getElementById("question-grade");
-        grade.innerHTML = "Correct.";
+        grade.textContent = "Correct.";
         goToNext();
     }
 }
 
 function goToNext() {
+    c++;
     setTimeout(function() {
-        c++
         displayContent();
     }, 1000)
 }
-
-// function countIterator() {
-//       c++; 
-//       displayContent;
-// }
-
-
-
-
