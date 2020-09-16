@@ -3,35 +3,31 @@ var cardContent = [
         question : "Which character defines an array?",
         choices : ["a.{}", "b.()", "c.[]" , "d.$"],
         answer : "c.[]",
-        questionNum : 1
     },
     {
         question : "Which is the correct syntax for a \"for\" loop?",
         choices : ["a.for (i=0+i<5+i++)", "b.for (var i=0; i<5; i++)","c.for(vari=0 i<5 i++)","d.for {var i=0; i<5; i++)"],
         answer : "b.for (var i=0; i<5; i++)",
-        questionNum : 2
     },
     {
         question : "Which of the following is a function?", 
         choices : ["a.function{}", "b.function++", "c.function.function", "d.function()"],
         answer : "d.function()",
-        questionNum : 3
     },
     {
         question : "Which of the following is a string?",
         choices : ["a.\"5\"", "b.20", "c.alert()", "d.styles.css"],
         answer : "a.\"5\"",
-        questionNum : 4
     },
     {
         question : "What does \"5\" + 10 = ?",
         choices : ["a.510", "b.50", "c.15", "d.undefined"],
         answer : "a.510",
-        questionNum : 5
     }
 ];
 
 var c = 0;
+var userScore = 0;
 
 // Adding an event listener with a fucntion that starts the quiz
 document.getElementById("startBtn").addEventListener("click" , function() {
@@ -40,14 +36,14 @@ document.getElementById("startBtn").addEventListener("click" , function() {
     // MOVED ALL THE CODE THAT WAS HERE TO -> createQuestionTemplate function
         // That way we can resuse the code. 
         // Basically we make sure the whole card is deleted before start adding the new questions
-   createQuestionTemplate();
+    createQuestionTemplate();
 
     displayContent();
 })
 
-function createQuestionTemplate() {
-     // Laying out all the HTML that will be used for the quiz
 
+// Laying out all the HTML that will be used for the quiz
+function createQuestionTemplate() {
     // Main div
     var mainDiv =  document.createElement("div");
     mainDiv.setAttribute("id" , "question-card");
@@ -89,11 +85,16 @@ function createQuestionTemplate() {
     document.getElementById("question-card").appendChild(gradeEL);
 }
 
+
 // Function to display content based on conditions 
 function displayContent() {
     var card = document.querySelector('#question-card');
-    card.remove(); // doing this helped with the multiple firing issue
+    card.remove();
     createQuestionTemplate();
+
+    if (c > 4) {
+        endQuiz();
+    }
 
     var question = cardContent[c].question;
     var questionDisplayed = document.getElementById("question-display");
@@ -108,9 +109,10 @@ function displayContent() {
             event.stopPropagation();
             handleClick(event);
             })
-        }          
+        }  
 }
 
+// Function for click events that take place during the quiz
 function handleClick(event) {
     console.log('Current: ', c)
     console.log(cardContent[1].answer)
@@ -124,13 +126,87 @@ function handleClick(event) {
     } else {
         var grade = document.getElementById("question-grade");
         grade.textContent = "Correct.";
+        userScore + 100;
         goToNext();
-    }
+    } 
 }
+
 
 function goToNext() {
     c++;
     setTimeout(function() {
         displayContent();
-    }, 1000)
+    }, 500)
+}
+
+function endQuiz() {
+    document.getElementById("question-card").remove();
+    endGameTemplate();
+    endTemplateDisplay();
+}
+
+
+function endGameTemplate() {
+    // Adding main div
+    var cardDiv =  document.createElement("div");
+    cardDiv.setAttribute("id" , "end-card");
+    cardDiv.setAttribute("class" , "container p-3 w-50");
+    document.body.appendChild(cardDiv);
+    // Adding h1
+    var h1El =  document.createElement("h1");
+    h1El.setAttribute("class" , "mr-auto p-1 h1-tag");
+    document.getElementById("end-card").appendChild(h1El);
+    // Adding p
+    var pEl =  document.createElement("p");
+    pEl.setAttribute("class" , "mr-auto p-1 p-tag");
+    document.getElementById("end-card").appendChild(pEl);
+    // Adding form
+    var formEL =  document.createElement("form");
+    formEL.setAttribute("id" , "form");
+    formEL.setAttribute("class" , "row mr-auto mb-2 p-2");
+    document.getElementById("end-card").appendChild(formEL);
+    // Nesting label in formEl
+    var labelEl =  document.createElement("label");
+    labelEl.setAttribute("class" , "col m-1 label-tag");
+    document.getElementById("form").appendChild(labelEl);
+    // Nesting input in formEl
+    var inputEL =  document.createElement("input");
+    inputEL.setAttribute("class" , "col input-tag form-control");
+    inputEL.setAttribute("type" , "userInitials");
+    document.getElementById("form").appendChild(inputEL);
+    // Nesting button in formEL
+    var sumbitBtn =  document.createElement("button");
+    sumbitBtn.setAttribute("id" , "submit-button");
+    sumbitBtn.setAttribute("class" , "col mx-3 p-0 submit");
+    document.getElementById("form").appendChild(sumbitBtn);
+    // Line break
+    var brEl = document.createElement("br");
+    document.getElementById("end-card").appendChild(brEl);
+    // Horizontal rule
+    var hrEl = document.createElement("hr");
+    hrEl.setAttribute("class" , "line-break2");
+    document.getElementById("end-card").appendChild(hrEl);  
+}
+
+function endTemplateDisplay() {
+    var allDone = document.querySelector(".h1-tag");
+    allDone.textContent = "All Done!"
+
+    var pTag = document.querySelector(".p-tag");
+    pTag.textContent = "Your Final Score is : " + userScore + " !!!";
+
+    var labelTag = document.querySelector(".label-tag");
+    labelTag.textContent = "Enter Initials";
+
+    var buttonTag = document.querySelector(".submit");
+    buttonTag.textContent = "Submit";
+
+    buttonTag.addEventListener("click" , btnClick());
+}
+
+function btnClick() {
+    var userInitials = document.querySelector(".input-tag");
+    localStorage.setItem("initials", userInitials.innerHTML);
+    // var storeScore = localStorage.setItem("score" , userScore);
+
 }
