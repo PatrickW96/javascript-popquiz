@@ -1,6 +1,40 @@
+body {
+    background-image: url('../images/quiz-background.jpg');
+}
+
+#startBtn {
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+
+#scoreBtn , #submitBtn{
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 18px;
+}
+
+#startBtn:hover , #scoreBtn:hover , #submitBtn:hover{
+    background-color: #555d69;
+    color: whitesmoke;
+    transform: scale(1.02);
+}
+
+#startBtn:hover , #scoreBtn:focus , #submitBtn:focus{
+    outline:0;
+}
+
+#startBtn:hover , #scoreBtn:active , #submitBtn:active{
+    transform: scale(1.05);
+}
+
 #scoreTimerCard {
     border: solid black 2px;
     box-shadow: 0 6px 12px 0 rgba(0 , 0 , 0 , 0.3);
+    border-radius: 10px;
+    background-color: whitesmoke;
+    opacity: .8;
 }
 
 body #main-card {
@@ -9,6 +43,9 @@ body #main-card {
     display: grid;
     place-items: center;
     margin-top: 100px;
+    border-radius: 10px;
+    background-color: whitesmoke;
+    opacity: .9;
 }
 
 @media only screen and (max-width:768px) {
@@ -28,6 +65,9 @@ body #question-card {
     display: grid;
     place-items: center;
     margin-top: 100px;
+    border-radius: 10px;
+    background-color: whitesmoke;
+    opacity: .9;
 }
 
 @media only screen and (max-width:768px) {
@@ -43,7 +83,22 @@ body #end-card {
     display: grid;
     place-items: center;
     margin-top: 100px;
+    border-radius: 10px;
+    background-color: whitesmoke;
+    opacity: .9;
 }
+
+body #highScoreDiv {
+    border: solid black 2px;
+    box-shadow: 0 8px 16px 0 rgba(0 , 0 , 0 , 0.3);
+    display: grid;
+    place-items: center;
+    margin-top: 100px;
+    border-radius: 10px;
+    background-color: whitesmoke;
+    opacity: .9;
+}
+
 
 @media only screen and (max-width:768px) {
     #end-card {
@@ -92,4 +147,19 @@ body #end-card {
 
 .button:active {
     transform: scale(1.05);
+}
+
+.alert-danger , .alert-success{
+    padding: 10px;
+    width: 86%;
+    border-radius: 10px;
+    font-size: 24px;
+}
+
+#timer {
+    font-size: 32px;
+    background-color: #555d69;
+    color: whitesmoke;
+    padding: 8px;
+    border-radius: 10px;
 }
